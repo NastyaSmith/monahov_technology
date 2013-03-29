@@ -1,0 +1,197 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.1
+-- http://www.phpmyadmin.net
+-- 
+-- Хост: localhost
+-- Время создания: Ноя 07 2010 г., 21:40
+-- Версия сервера: 5.0.45
+-- Версия PHP: 5.2.4
+-- 
+-- БД: `monahov`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `class`
+-- 
+
+CREATE TABLE `class` (
+  `id_class` int(10) unsigned NOT NULL auto_increment,
+  `number` int(10) unsigned NOT NULL,
+  `name3` varchar(20) NOT NULL,
+  `id_user` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id_class`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=4 ;
+
+-- 
+-- Дамп данных таблицы `class`
+-- 
+
+INSERT INTO `class` VALUES (1, 10, 'В', 1);
+INSERT INTO `class` VALUES (2, 11, 'Б', 1);
+INSERT INTO `class` VALUES (3, 10, 'А', 2);
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `idstud`
+-- 
+
+CREATE TABLE `idstud` (
+  `id_idstud` int(10) unsigned NOT NULL auto_increment,
+  `id_idz` int(10) unsigned NOT NULL,
+  `id_stud` int(10) unsigned NOT NULL,
+  `mark` int(10) unsigned NOT NULL,
+  `mark2` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id_idstud`)
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=27 ;
+
+-- 
+-- Дамп данных таблицы `idstud`
+-- 
+
+INSERT INTO `idstud` VALUES (1, 1, 1, 2, 5);
+INSERT INTO `idstud` VALUES (2, 1, 2, 3, 0);
+INSERT INTO `idstud` VALUES (3, 1, 3, 4, 0);
+INSERT INTO `idstud` VALUES (4, 1, 4, 4, 0);
+INSERT INTO `idstud` VALUES (5, 2, 1, 4, 0);
+INSERT INTO `idstud` VALUES (6, 2, 2, 3, 0);
+INSERT INTO `idstud` VALUES (7, 2, 3, 4, 0);
+INSERT INTO `idstud` VALUES (8, 2, 4, 5, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `idz`
+-- 
+
+CREATE TABLE `idz` (
+  `id_idz` int(10) unsigned NOT NULL auto_increment,
+  `name5` varchar(20) NOT NULL,
+  `id_sub` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id_idz`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=8 ;
+
+-- 
+-- Дамп данных таблицы `idz`
+-- 
+
+INSERT INTO `idz` VALUES (1, 'ИДЗ1', 1);
+INSERT INTO `idz` VALUES (2, 'ИДЗ 2', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `school`
+-- 
+
+CREATE TABLE `school` (
+  `id_school` int(10) unsigned NOT NULL auto_increment,
+  `name1` varchar(20) NOT NULL,
+  `city` varchar(80) NOT NULL,
+  PRIMARY KEY  (`id_school`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=5 ;
+
+-- 
+-- Дамп данных таблицы `school`
+-- 
+
+INSERT INTO `school` VALUES (1, 'МОУ №67', 'Тольятти');
+INSERT INTO `school` VALUES (2, 'лицей №59', 'Самара');
+INSERT INTO `school` VALUES (4, 'школа №57', 'Тольятти');
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `student`
+-- 
+
+CREATE TABLE `student` (
+  `id_stud` int(10) unsigned NOT NULL auto_increment,
+  `name4` varchar(20) NOT NULL,
+  `surname1` varchar(30) NOT NULL,
+  `otchestvo1` varchar(30) NOT NULL,
+  `id_class` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id_stud`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=5 ;
+
+-- 
+-- Дамп данных таблицы `student`
+-- 
+
+INSERT INTO `student` VALUES (1, 'Максим', 'Кузнецов', 'Владимирович', 2);
+INSERT INTO `student` VALUES (2, 'Александр', 'Петров', 'Николаевич', 2);
+INSERT INTO `student` VALUES (3, 'Елена', 'Чернова', 'Сергеевна', 2);
+INSERT INTO `student` VALUES (4, 'Марина', 'Кудряшова', 'Ивановна', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `subject`
+-- 
+
+CREATE TABLE `subject` (
+  `id_sub` int(10) unsigned NOT NULL auto_increment,
+  `name2` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id_sub`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=6 ;
+
+-- 
+-- Дамп данных таблицы `subject`
+-- 
+
+INSERT INTO `subject` VALUES (1, 'алгебра');
+INSERT INTO `subject` VALUES (2, 'геометрия');
+INSERT INTO `subject` VALUES (3, 'биология');
+INSERT INTO `subject` VALUES (4, 'русский язык');
+INSERT INTO `subject` VALUES (5, 'литература');
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `us`
+-- 
+
+CREATE TABLE `us` (
+  `id_us` int(10) unsigned NOT NULL auto_increment,
+  `id_sub` int(10) unsigned NOT NULL,
+  `id_user` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id_us`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=4 ;
+
+-- 
+-- Дамп данных таблицы `us`
+-- 
+
+INSERT INTO `us` VALUES (1, 1, 1);
+INSERT INTO `us` VALUES (2, 2, 1);
+INSERT INTO `us` VALUES (3, 3, 2);
+
+-- --------------------------------------------------------
+
+-- 
+-- Структура таблицы `user`
+-- 
+
+CREATE TABLE `user` (
+  `id_user` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(30) NOT NULL,
+  `otchestvo` varchar(30) NOT NULL,
+  `login` varchar(20) NOT NULL,
+  `password` varchar(80) NOT NULL,
+  `status` int(5) NOT NULL,
+  `id_school` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id_user`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=9 ;
+
+-- 
+-- Дамп данных таблицы `user`
+-- 
+
+INSERT INTO `user` VALUES (1, 'Елена', 'Бахусова', 'Васильевна', 'elena', '27021955', 1, 1);
+INSERT INTO `user` VALUES (2, 'Марина', 'Струкова', 'Григорьевна', 'class1', '233445', 1, 1);
+INSERT INTO `user` VALUES (3, 'Петр', 'Нишков', 'Михайлович', 'class2', '123456', 0, 2);
+INSERT INTO `user` VALUES (8, 'Калмыкова', 'Наталья', 'Семеновна', 'class3', 's32188', 0, 4);
+        
